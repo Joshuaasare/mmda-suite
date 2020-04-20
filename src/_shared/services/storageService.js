@@ -1,3 +1,10 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2019-02-24 03:54:13
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 17:05:59
+ */
+
 import Realm from 'realm';
 import forEach from 'lodash/forEach';
 import axios from 'axios';
@@ -30,10 +37,10 @@ export async function populateLocalDb() {
       });
     };
     /**
-    please note that since some schemas are children of other schemas,
-    it is important to other the population such that child schemas are populated
-    before parent schemas
-    */
+     *please note that since some schemas are objects of other schemas,
+     *it is important to order the population such that child schemas are populated
+     *before parent schemas
+     */
     await populateLocalSchema(realmSchema.AssemblySchema.name);
     await populateLocalSchema(realmSchema.MarketSchema.name);
     await populateLocalSchema(realmSchema.RevenueHeadSchema.name);

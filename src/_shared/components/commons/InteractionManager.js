@@ -1,3 +1,11 @@
+/*
+ * @Author: Joshua Asare
+ * @Date: 2019-11-01 17:14:07
+ * @Last Modified by:   Joshua Asare
+ * @Last Modified time: 2019-11-01 17:14:07
+ */
+
+
 import { InteractionManager } from 'react-native';
 
 export default {

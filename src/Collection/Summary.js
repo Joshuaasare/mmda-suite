@@ -1,3 +1,10 @@
+/**
+ * @Author: Joshua Asare
+ * @Date:   2019-02-04 15:57:41
+ * @Last modified by:   Joshua Asare
+ * @Last modified time: 2019-11-01 17:12:20
+ */
+
 /* @flow */
 import React, { Component } from 'react';
 import {
@@ -46,16 +53,29 @@ class Summary extends Component<Props, State> {
     const e1 = scannedForToday(item.psuedoId);
     const e2 = paidForToday(item.psuedoId);
     return (
-      <View style={styles.itemViewStyle} key={i}>
+      <View
+        style={[
+          styles.itemViewStyle,
+          e1 ? { borderLeftColor: 'green' } : { borderLeftColor: 'maroon' },
+        ]}
+        key={i}
+      >
         <CircularButton imageUrl={item.picture} borderRadius={25} />
         <View style={[styles.textViewStyle, { width: this.props.deviceWidth - 180 }]}>
           <Text style={styles.shopNameTextStyle}>{item.nameOfShop}</Text>
-          <Text style={[{ color: e1 ? 'green' : 'red' }, styles.textStyle]}>
+          <Text style={[{ color: e1 ? 'green' : 'maroon' }, styles.textStyle]}>
             {e1 ? 'Scanned' : 'Not Scanned'}
           </Text>
-          <Text style={[{ color: e2 ? 'green' : 'red' }, styles.textStyle]}>
-            {e2 ? 'Paid' : 'Not Paid'}
-          </Text>
+          <View style={styles.outstandingBox}>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                color: item.amountOwing > 0 ? 'maroon' : 'green',
+              }}
+            >
+              {`GHS ${item.amountOwing.toFixed(2)}`}
+            </Text>
+          </View>
         </View>
         <View style={{ flex: 1, alignItems: 'flex-end' }}>
           <TouchableOpacity
@@ -65,13 +85,27 @@ class Summary extends Component<Props, State> {
           >
             <CircularButton
               borderRadius={25}
-              iconName="gps-fixed"
-              iconColor="white"
-              backgroundColor="purple"
-              groupName="MaterialIcons"
+              iconName="direction"
+              iconColor="black"
+              backgroundColor="#F5F5F5"
+              groupName="Entypo"
             />
           </TouchableOpacity>
         </View>
+      </View>
+    );
+  }
+
+  renderAccounts() {
+    return (
+      <View style={styles.accountCard}>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{ color: 'white', fontSize: 13 }}>Amount Collected</Text>
+          <View style={styles.iconViewStyle}>
+            <Icon name="ios-wallet" size={20} color="white" />
+          </View>
+        </View>
+        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>GHS 200</Text>
       </View>
     );
   }
@@ -85,7 +119,8 @@ class Summary extends Component<Props, State> {
       );
     }
     return (
-      <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+      <ScrollView contentContainerStyle={{}}>
+        <View style={styles.accountsView}>{this.renderAccounts()}</View>
         {this.state.shopDetails.map((item, i, arr) => this.renderItem(item, i, arr))}
       </ScrollView>
     );
@@ -118,17 +153,19 @@ class Summary extends Component<Props, State> {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#F5F5F5',
   },
   itemViewStyle: {
     flexDirection: 'row',
-    paddingVertical: 5,
+    marginVertical: 5,
+    marginHorizontal: 10,
+    paddingVertical: 10,
     paddingHorizontal: 10,
-    borderBottomWidth: 1,
-    borderColor: '#E4E4E4',
-    height: 80,
-    width: '90%',
+    height: 100,
     alignItems: 'center',
+    borderLeftWidth: 5,
+    backgroundColor: 'white',
+    borderRadius: 4,
   },
   textViewStyle: {
     marginVertical: 2,
@@ -139,6 +176,7 @@ const styles = {
     //  color: 'white',
     fontSize: 13,
     fontWeight: '800',
+    //  numberOfLines: 2,
   },
   textStyle: {
     fontSize: 12,
@@ -152,6 +190,36 @@ const styles = {
     textAlign: 'center',
     color: 'white',
     fontSize: 13,
+  },
+  accountsView: {
+    paddingVertical: 5,
+  },
+  accountCard: {
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+    elevation: 2,
+    borderBottomLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    backgroundColor: '#6C40BE',
+  },
+  iconViewStyle: {
+    paddingHorizontal: 6,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  outstandingBox: {
+    marginVertical: 5,
+    height: 30,
+    width: 100,
+    paddingVertical: 15,
+    backgroundColor: '#F5F5F5',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderRadius: 3,
   },
 };
 

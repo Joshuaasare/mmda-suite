@@ -1,5 +1,12 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2019-03-02 10:23:54
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 17:05:20
+ */
+
 import * as realmSchemas from './realmSchemas';
-import { getRealmInstance, getMidnightDate, consoleIndividualRealmObject } from '.';
+import { getRealmInstance, getMidnightDate } from '.';
 
 export async function getShopsData() {
   const realm = getRealmInstance();
@@ -16,10 +23,8 @@ export const paidForToday = (psuedoId: string) => {
   const today = new Date();
   const millisecondsDate = Date.parse(getMidnightDate(today));
   const results = realm
-    .objects(realmSchemas.ScannedSchema.name)
-    .filtered(`date = ${millisecondsDate} && trader.psuedoId = '${psuedoId}' AND paid = 1`);
-  // consoleIndividualRealmObject(results);
-  console.log(`paid length: ${results.length}`);
+    .objects(realmSchemas.TransactionSchema.name)
+    .filtered(`date = ${millisecondsDate} && trader.psuedoId = '${psuedoId}' AND isDailyToll = 1`);
   if (results.length !== 0) return true;
   return false;
 };
@@ -31,9 +36,6 @@ export const scannedForToday = (psuedoId: string) => {
   const results = realm
     .objects(realmSchemas.ScannedSchema.name)
     .filtered(`date = ${millisecondsDate} && trader.psuedoId = '${psuedoId}'`);
-  //  console.warn(results);
-  // console.log(`scanned length: ${results.length}`);
-  consoleIndividualRealmObject(results);
   if (results.length !== 0) return true;
   return false;
 };
@@ -43,7 +45,6 @@ export async function getTraderDetails(psuedoId: string) {
   const traderDetails = realm
     .objects(realmSchemas.TraderSchema.name)
     .filtered(`psuedoId = '${psuedoId}'`);
-  // consoleIndividualRealmObject(traderDetails);
   return traderDetails[0];
 }
 
@@ -52,7 +53,6 @@ export async function getTollCollectorDetails(id: Number) {
   const tollCollectorDetails = realm
     .objects(realmSchemas.TollCollectorSchema.name)
     .filtered(`id = ${id}`);
-  // consoleIndividualRealmObject(tollCollectorDetails);
   return tollCollectorDetails[0];
 }
 

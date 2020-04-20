@@ -1,3 +1,10 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2018-12-27 00:23:10
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 17:04:00
+ */
+
 // @flow
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';

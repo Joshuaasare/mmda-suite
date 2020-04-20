@@ -17,6 +17,7 @@ export * from './EmptyStates';
 export * from './MapFooterItem';
 export * from './MapFooter';
 export * from './CameraOverlay';
+export * from './ListSeparator';
 export { default as Icon } from './VectorIcon';
 export { default as Input } from './Input';
 export { default as Container } from './Container';

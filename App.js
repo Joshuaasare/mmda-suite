@@ -1,101 +1,106 @@
-/* @flow */
+/**
+ * @Author: joshuaasare
+ * @Date:   2018-12-18 20:51:25
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 16:56:17
+ */
 
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
 import {
-  Container, Header, CircularButton, Button,
+  View, Text, TouchableOpacity, Modal,
+} from 'react-native';
+import {
+  Container, CircularButton, Header, Icon, Button,
 } from './src/_shared/components/commons';
 import { constants } from './src/_shared/constants';
 
 type Props = {};
-type State = {};
+type State = {
+  modalVisible: boolean,
+};
+
 class App extends Component<Props, State> {
-  state = {};
-
-  renderContent() {
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={styles.card}>
-          <View style={styles.circularImageView}>
-            <CircularButton imageUrl={constants.misc.RANDOM_IMAGE_URL} borderRadius={60} />
-          </View>
-          <View style={styles.textViewStyle}>
-            <Text>Obiri Dan Ventures</Text>
-            <Text style={styles.amount}>GHS 1.00</Text>
-          </View>
-
-          <View style={styles.buttonsViewStyle}>
-            <View style={styles.btn}>
-              <Button
-                buttonColor="green"
-                borderColor="green"
-                buttonText="Confirm"
-                textColor="white"
-                rounded
-              />
-            </View>
-
-            <View style={styles.btn}>
-              <Button
-                buttonColor="maroon"
-                borderColor="maroon"
-                buttonText="Defer"
-                textColor="white"
-                rounded
-              />
-            </View>
-          </View>
-        </View>
-      </ScrollView>
-    );
-  }
+  state = {
+    modalVisible: false,
+  };
 
   render() {
     return (
       <Container>
         <Header />
-        {this.renderContent()}
+        <Button buttonColor="maroon" onPress={() => this.setState({ modalVisible: true })} />
+        <Modal
+          animationType="slide"
+          visible={this.state.modalVisible}
+          onRequestClose={() => this.setState({ modalVisible: false })}
+          transparent
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalCard}>
+              <View style={styles.modalTop}>
+                <Text>Please review and proceed</Text>
+                <View style={styles.iconView}>
+                  <Icon name="ios-close" size={25} />
+                </View>
+              </View>
+              <View style={styles.outstandingBox}>
+                <Text>Outstanding</Text>
+                <Text>Hello</Text>
+              </View>
+              <View style={styles.outstandingBox}>
+                <Text>Outstanding</Text>
+                <Text>Hello</Text>
+              </View>
+              <View style={styles.outstandingBox}>
+                <Text>Outstanding</Text>
+                <Text>Hello</Text>
+              </View>
+              <Button buttonColor="green" onPress={() => this.setState({ modalVisible: false })} />
+            </View>
+          </View>
+        </Modal>
       </Container>
     );
   }
 }
-
 const styles = {
-  container: {
-    alignItems: 'center',
-  },
-  card: {
-    width: '90%',
-    marginVertical: 20,
-    alignItems: 'center',
-    elevation: 2,
-    paddingHorizontal: 10,
-    backgroundColor: 'white',
-  },
-  circularImageView: {
+  modalOverlay: {
+    flex: 1,
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0,0,0,0.5)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
   },
-  textViewStyle: {
-    marginVertical: 2,
-    marginHorizontal: 20,
-    justifyContent: 'space-between',
+  modalCard: {
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+    width: '80%',
+    height: 250,
+    backgroundColor: 'white',
     alignItems: 'center',
   },
-  buttonsViewStyle: {
-    paddingVertical: 20,
+  outstandingBox: {
+    height: 40,
+    width: '90%',
+    paddingVertical: 10,
+    marginHorizontal: 10,
+    marginVertical: 3,
+    backgroundColor: '#F5F5F5',
+    justifyContent: 'space-around',
+    alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    borderRadius: 3,
   },
-  btn: {
+  modalTop: {
+    flexDirection: 'row',
+    marginHorizontal: 10,
+    paddingVertical: 5,
+    width: '90%',
+  },
+  iconView: {
     flex: 1,
-    paddingHorizontal: 10,
-  },
-  amount: {
-    color: 'maroon',
-    fontWeight: 'bold',
+    alignItems: 'flex-end',
   },
 };
 

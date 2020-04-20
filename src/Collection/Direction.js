@@ -1,3 +1,10 @@
+/*
+ * @Author: Joshua Asare
+ * @Date: 2019-11-01 17:14:30
+ * @Last Modified by: Joshua Asare
+ * @Last Modified time: 2019-11-05 22:59:57
+ */
+
 /* @flow */
 import React, { Component } from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
@@ -80,7 +87,11 @@ class Direction extends Component<Props, State> {
   async onUserLocationChange(origin, destination) {
     const { mode } = this.state;
     const modeToText = mode === 'walking' ? 'walk' : 'drive';
-    const resp = await getRealTimeDurationAndDistance({ origin, destination, mode });
+    const resp = await getRealTimeDurationAndDistance({
+      origin,
+      destination,
+      mode,
+    });
     if (resp.error) {
       return this.setState({
         eta: 'Request failed',
@@ -94,7 +105,11 @@ class Direction extends Component<Props, State> {
   async resetDurationAndDistance(origin, destination, deviceWidth, result) {
     const { mode } = this.state;
     const modeToText = mode === 'walking' ? 'walk' : 'drive';
-    const resp = await getRealTimeDurationAndDistance({ origin, destination, mode });
+    const resp = await getRealTimeDurationAndDistance({
+      origin,
+      destination,
+      mode,
+    });
     if (resp.error) {
       return this.setState({
         eta: 'Request failed',
@@ -337,17 +352,29 @@ class Direction extends Component<Props, State> {
         >
           <MapView.Marker
             title="You"
-            coordinate={{ latitude: initialRegion.latitude, longitude: initialRegion.longitude }}
+            coordinate={{
+              latitude: initialRegion.latitude,
+              longitude: initialRegion.longitude,
+            }}
           />
           <MapView.Marker
             title={data.nameOfShop}
-            coordinate={{ latitude: destination.latitude, longitude: destination.longitude }}
+            coordinate={{
+              latitude: destination.latitude,
+              longitude: destination.longitude,
+            }}
           >
             <Image source={markerHome} style={styles.markerImageStyle} />
           </MapView.Marker>
           <MapViewDirections
-            origin={{ latitude: initialRegion.latitude, longitude: initialRegion.longitude }}
-            destination={{ latitude: destination.latitude, longitude: destination.longitude }}
+            origin={{
+              latitude: initialRegion.latitude,
+              longitude: initialRegion.longitude,
+            }}
+            destination={{
+              latitude: destination.latitude,
+              longitude: destination.longitude,
+            }}
             apikey={constants.map.GOOGLE_MAPS_API_KEY}
             strokeWidth={3}
             strokeColor="purple"

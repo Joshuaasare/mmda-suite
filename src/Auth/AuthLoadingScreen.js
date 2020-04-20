@@ -5,9 +5,10 @@ import {
   hasLoggedIn,
   getUserDataWithoutPhoneAndPin,
   hasCompletedSetup,
-  getMarketSections,
+  //  getMarketSections,
   //  setAsNotCompletedSetup,
   //  removeAllLoginCache,
+  // deleteAllData
 } from '../_shared/services';
 import { loadUserData } from '../_shared/actions/profile_action';
 

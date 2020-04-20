@@ -23,6 +23,8 @@ const EmptyStates = (props: Props) => {
         return require('../../assets/images/blank.png');
       case 'cameraOff':
         return require('../../assets/images/camera.png');
+      case 'sync':
+        return require('../../assets/images/sync.png');
       default:
         return null;
     }

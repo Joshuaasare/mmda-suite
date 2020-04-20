@@ -1,3 +1,10 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2018-12-27 14:59:46
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 17:02:46
+ */
+
 import React from 'react';
 import {
   ImageBackground, Text, View, TouchableOpacity,

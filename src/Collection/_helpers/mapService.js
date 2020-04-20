@@ -23,7 +23,6 @@ export async function fetchAllShopCoordinatesAndData() {
 }
 
 export const fetchGeolocation = () => {
-  console.warn(Platform.Version);
   if (Platform.OS === 'ios' || Platform.Version > 17) {
     return Geolocation;
   }

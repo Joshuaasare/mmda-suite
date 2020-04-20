@@ -1,3 +1,10 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2019-03-06 08:46:09
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 17:05:31
+ */
+
 function generateEventId(e) {
   const pseudoEventId = Math.random();
   for (let i = 0; i < e.length; i += 1) {

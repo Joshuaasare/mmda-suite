@@ -20,6 +20,7 @@ import { CameraClosed } from '.';
 type Props = {
   navigation: Object,
   tollCollectorId: Number,
+  ticketPrice: Number,
 };
 type State = {
   cameraPermissionsGranted: boolean,
@@ -66,7 +67,7 @@ class Camera extends Component<Props, State> {
     const {
       showSpinner, cameraPermissionsGranted, errorMessage, cameraOn,
     } = this.state;
-    const { navigation, tollCollectorId } = this.props;
+    const { navigation, tollCollectorId, ticketPrice } = this.props;
 
     if (showSpinner) {
       return (
@@ -109,7 +110,11 @@ class Camera extends Component<Props, State> {
             const { data } = barcodeData;
             Vibration.vibrate();
             this.setState({ cameraOn: false });
-            return navigation.navigate('scanPayment', { psuedoId: data, tollCollectorId });
+            return navigation.navigate('scanPayment', {
+              psuedoId: data,
+              tollCollectorId,
+              ticketPrice,
+            });
           }}
         >
           <CameraOverlay />
@@ -178,6 +183,7 @@ const mapStateToProps = state => ({
   deviceWidth: state.layout.newLayoutWidth,
   deviceHeight: state.layout.newLayoutHeight,
   tollCollectorId: state.profile.id,
+  ticketPrice: state.profile.marketTicketPrice,
 });
 
 export default connect(

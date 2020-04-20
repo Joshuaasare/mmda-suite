@@ -1,3 +1,10 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2019-02-19 19:16:17
+ * @Last modified by:   Joshua Asare
+ * @Last modified time: 2019-11-01 17:11:47
+ */
+
 import { Platform, AsyncStorage } from 'react-native';
 import * as KeyChain from 'react-native-keychain';
 import axios from 'axios';

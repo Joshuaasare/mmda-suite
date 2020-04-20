@@ -1,3 +1,9 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2019-02-04 15:58:38
+ * @Last modified by:   Joshua Asare
+ * @Last modified time: 2019-11-01 17:12:04
+ */
 /* @flow */
 import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
@@ -90,7 +96,6 @@ class App extends Component<Props, State> {
         });
       }, // success
       (error) => {
-        console.warn(error);
         switch (error.code) {
           case 1:
             this.setState({

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import {
   Container, CircularButton, Header, Icon,
-} from './src/_shared/components/commons';
-import { constants } from './src/_shared/constants';
+} from '../_shared/components/commons';
+import { constants } from '../_shared/constants';
 
 type Props = {};
 type State = {};
-class App extends Component<Props, State> {
+class AddTrader extends Component<Props, State> {
   state = {};
 
   render() {
@@ -20,4 +20,4 @@ class App extends Component<Props, State> {
 }
 const styles = {};
 
-export default App;
+export default AddTrader;

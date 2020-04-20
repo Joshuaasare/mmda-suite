@@ -1,0 +1,181 @@
+/**here lies the default configuration for the field
+ **needed for applying for a property in an assembly
+ **/
+{
+  "permanent_structure": {
+    "personal_information": [
+      {
+        "field": "surname",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "other_names",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "phone_number",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "postal_address",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "residential_address",
+        "data_type": "string",
+        "required": true
+      }
+    ],
+    "general_building_information": [
+      {
+        "field": "status",
+        "data_type": "enum",
+        "enumerators": ["residential", "commercial"],
+        "required": true
+      },
+      {
+        "field": "general_description",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "specific_purpose",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "materials_to_be_used",
+        "data_type": "array",
+        "required": true
+      }
+    ],
+    "numerical_information": [
+      {
+        "field": "cubic_capacity",
+        "data_type": "decimal",
+        "required": true,
+        "unit": "cubic_metre"
+      },
+      {
+        "field": "estimated_cost_of_property",
+        "data_type": "decimal",
+        "required": true,
+        "unit": "ghana_cedi"
+      },
+      {
+        "field": "area_of_site",
+        "data_type": "decimal",
+        "required": true,
+        "unit": "square_metre"
+      }
+    ]
+  },
+  "temporary_structure": {
+    "personal_information": [
+      {
+        "field": "surname",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "other_names",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "phone_number",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "postal_address",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "residential_address",
+        "data_type": "string",
+        "required": true
+      }
+    ],
+    "general_structure_information": [
+      {
+        "field": "electoral_area",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "specific_site_of_structure",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "type_of_structure",
+        "data_type": "enum",
+        "enumerators": ["kiosk", "container"],
+        "required": true
+      },
+      {
+        "field": "material_composition",
+        "data_type": "array",
+        "required": true
+      },
+      {
+        "field": "length",
+        "data_type": "decimal",
+        "required": true,
+        "unit": "metre"
+      },
+      {
+        "field": "breath",
+        "data_type": "decimal",
+        "required": true,
+        "unit": "metre"
+      },
+      {
+        "field": "height",
+        "data_type": "decimal",
+        "required": true,
+        "unit": "metre"
+      },
+      {
+        "field": "previous_authorization",
+        "data_type": "boolean",
+        "required": true
+      }
+    ]
+  },
+  "license": {
+    "personal_information": [
+      {
+        "field": "surname",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "other_names",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "phone_number",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "postal_address",
+        "data_type": "string",
+        "required": true
+      },
+      {
+        "field": "residential_address",
+        "data_type": "string",
+        "required": true
+      }
+    ]
+  }
+}

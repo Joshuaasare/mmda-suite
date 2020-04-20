@@ -9,7 +9,9 @@ import { ShopEdit, ShopDetails, Shops } from './Shops';
 import {
   Summary, Map, Statistics, Direction,
 } from './Collection';
+import { Debtors, DebtPayment } from './Debtors';
 import { Camera, ScanPayment } from './QRScan';
+import { Sync } from './Sync';
 import { DrawerSideBar, TabBarComponent, Icon } from './_shared/components/commons';
 
 export const CollectionPages = createBottomTabNavigator(
@@ -84,6 +86,24 @@ export const DrawerPages = createDrawerNavigator(
         title: 'Scan Code',
       },
     },
+    Debtors: {
+      screen: Debtors,
+      navigationOptions: {
+        drawerIcon: ({ tintColor }) => (
+          <Icon name="money" size={18} groupName="FontAwesome" color="white" />
+        ),
+        title: 'Pay Debt',
+      },
+    },
+    Sync: {
+      screen: Sync,
+      navigationOptions: {
+        drawerIcon: ({ tintColor }) => (
+          <Icon name="ios-sync" size={18} groupName="Ionicons" color="white" />
+        ),
+        title: 'Sync Data',
+      },
+    },
   },
   {
     contentComponent: DrawerSideBar,
@@ -102,5 +122,6 @@ export const Navigator = createStackNavigator({
   shopEdit: { screen: ShopEdit, navigationOptions: { header: null } },
   direction: { screen: Direction, navigationOptions: { header: null } },
   scanPayment: { screen: ScanPayment, navigationOptions: { header: null } },
+  debtPayment: { screen: DebtPayment, navigationOptions: { header: null } },
   //  collectionPages: { screen: CollectionPages, navigationOptions: { header: null } },
 });

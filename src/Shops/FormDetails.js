@@ -1,3 +1,10 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2019-01-01 20:48:59
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 17:02:35
+ */
+
 // @flow
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';

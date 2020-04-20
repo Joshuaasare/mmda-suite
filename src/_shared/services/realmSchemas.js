@@ -1,3 +1,10 @@
+/**
+ * @Author: joshuaasare
+ * @Date:   2019-02-15 22:31:04
+ * @Last modified by:   joshuaasare
+ * @Last modified time: 2019-11-01 17:05:51
+ */
+
 export const TollCollectorSchema = {
   name: 'TollCollector',
   primaryKey: 'id',
@@ -126,6 +133,7 @@ export const TransactionSchema = {
     trader: 'Trader',
     date: 'int',
     amountPaid: 'float',
+    isDailyToll: { type: 'int', default: 1 },
     isUpdated: { type: 'bool', default: false },
   },
 };
@@ -141,7 +149,6 @@ export const ScannedSchema = {
     tollCollector: 'TollCollector',
     trader: 'Trader',
     date: 'int',
-    paid: { type: 'int', default: 0 },
     isUpdated: { type: 'bool', default: false },
   },
 };
